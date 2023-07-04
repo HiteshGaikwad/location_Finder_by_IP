@@ -4,16 +4,18 @@ const showData= document.getElementById("alldata");
 
 let IP="";
 const token="b11fbd3a8f79e8";
-const key="AIzaSyDoUICPU6WvV_vcwYY45eqY9fJCTJTuxS4";
 
 $.getJSON("https://api.ipify.org?format=json", function(data) {
         IP=data.ip;
     })
 
+    
+
 getButton.addEventListener("click",getDetails);
 
  async function getDetails(){
 
+    document.getElementById("ip-address").innerHTML=`&nbsp${IP}`;
     getButton.style.display="none"
     showData.style.display="inline";
 
@@ -42,16 +44,16 @@ getButton.addEventListener("click",getDetails);
         heading_info.className="heading_info";
         heading_info.innerHTML=`
         <div class="info">
-                <span class="details">Lat:  ${lat}</span>
-                <span class="details">Long:  ${long}</span>
+                <span class="details">Lat:  &nbsp${lat}</span>
+                <span class="details">Long:  &nbsp${long}</span>
             </div>
                 <div class="info">
-                    <span class="datails">City:  ${result.city}</span>
-                    <span class="details">Region:  ${result.region}</span>
+                    <span class="datails">City:  &nbsp${result.city}</span>
+                    <span class="details">Region:  &nbsp${result.region}</span>
                 </div>
             <div class="info">
-                <span class="details">Organisation:  ${result.org}</span>
-                <span class="details">Hostname:  ${result.ip}</span>
+                <span class="details">Organisation:  &nbsp${result.org}</span>
+                <span class="details">Hostname:  &nbsp${result.ip}</span>
             </div>
         `
         showData.append(heading_info);
@@ -78,10 +80,10 @@ getButton.addEventListener("click",getDetails);
         let ts = 1581338765000;
         let timeZone = new Date(ts).toLocaleString("en-US", { timeZone: `${result.timezone}` });
         footer_info.innerHTML=`
-        <div class="foot_info">Time Zone:  ${result.timezone}</div>
-            <div class="foot_info">Date And Time: ${timeZone}</div>
-            <div class="foot_info">Pincode: ${result.postal}</div>
-            <div class="foot_info">Message: <span class="extra_text"> ${list[0].Message}</span></div>
+        <div class="foot_info">Time Zone:  &nbsp${result.timezone}</div>
+            <div class="foot_info">Date And Time: &nbsp${timeZone}</div>
+            <div class="foot_info">Pincode: &nbsp${result.postal}</div>
+            <div class="foot_info">Message: <span class="extra_text"> &nbsp${list[0].Message}</span></div>
         `
         showData.append(footer_info)
 
